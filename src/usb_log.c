@@ -1,7 +1,7 @@
 /*
  * usb_log.c
  *
- * Copyright (c) 2023 Jan Rusnak <jan@rusnak.sk>
+ * Copyright (c) 2024 Jan Rusnak <jan@rusnak.sk>
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -100,42 +100,42 @@ static void tsk(void *p)
 		xQueueReceive(usb_logger.que, &log_entry, portMAX_DELAY);
 		switch (log_entry.type) {
 #if UDP_LOG_INTR_EVENTS == 1
-		case UDP_INTR_EVENT_TYPE              :
+		case UDP_INTR_EVENT_TYPE :
 			(*log_entry.udp_intr_event.fmt)(&log_entry.udp_intr_event);
 			break;
 #endif
 #if UDP_LOG_STATE_EVENTS == 1
-		case UDP_STATE_EVENT_TYPE             :
+		case UDP_STATE_EVENT_TYPE :
 			(*log_entry.udp_state_event.fmt)(&log_entry.udp_state_event);
 			break;
 #endif
 #if UDP_LOG_ENDP_EVENTS == 1
-		case UDP_ENDP_EVENT_TYPE              :
+		case UDP_ENDP_EVENT_TYPE :
 			(*log_entry.udp_endp_event.fmt)(&log_entry.udp_endp_event);
 			break;
 #endif
 #if UDP_LOG_OUT_IRP_EVENTS == 1
-		case UDP_OUT_IRP_EVENT_TYPE           :
+		case UDP_OUT_IRP_EVENT_TYPE :
 			(*log_entry.udp_out_irp_event.fmt)(&log_entry.udp_out_irp_event);
 			break;
 #endif
 #if UDP_LOG_ERR_EVENTS == 1
-		case UDP_ERR_EVENT_TYPE               :
+		case UDP_ERR_EVENT_TYPE :
 			(*log_entry.udp_err_event.fmt)(&log_entry.udp_err_event);
 			break;
 #endif
 #if USB_LOG_CTL_REQ_EVENTS == 1
-		case USB_CTL_REQ_EVENT_TYPE           :
+		case USB_CTL_REQ_EVENT_TYPE :
 			(*log_entry.usb_ctl_req_event.fmt)(&log_entry.usb_ctl_req_event);
 			break;
 #endif
 #if USB_LOG_CTL_REQ_STP_EVENTS == 1
-		case USB_CTL_REQ_STP_EVENT_TYPE       :
+		case USB_CTL_REQ_STP_EVENT_TYPE :
 			(*log_entry.usb_ctl_req_stp_event.fmt)(&log_entry.usb_ctl_req_stp_event);
 			break;
 #endif
 #if USB_LOG_CTL_REQ_CMD_EVENTS == 1
-		case USB_CTL_REQ_CMD_EVENT_TYPE       :
+		case USB_CTL_REQ_CMD_EVENT_TYPE :
 			(*log_entry.usb_ctl_req_cmd_event.fmt)(&log_entry.usb_ctl_req_cmd_event);
 			break;
 #endif

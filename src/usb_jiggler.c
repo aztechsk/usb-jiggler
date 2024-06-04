@@ -1,7 +1,7 @@
 /*
  * usb_jiggler.c
  *
- * Copyright (c) 2023 Jan Rusnak <jan@rusnak.sk>
+ * Copyright (c) 2024 Jan Rusnak <jan@rusnak.sk>
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -1078,13 +1078,13 @@ static void std_clr_set_endp_feat(struct usb_ctl_req *ucr)
 static void std_in_req_ack_clbk(void)
 {
 	switch (stp_pkt->b_request) {
-	case USB_GET_DESCRIPTOR    :
+	case USB_GET_DESCRIPTOR :
 		/* FALLTHRU */
-	case USB_GET_STATUS        :
+	case USB_GET_STATUS :
 		/* FALLTHRU */
         case USB_GET_CONFIGURATION :
 		/* FALLTHRU */
-        case USB_GET_INTERFACE     :
+        case USB_GET_INTERFACE :
 #if USB_LOG_CTL_REQ_CMD_EVENTS == 1
 		log_std_cmd_event(req_done_str);
 #endif
@@ -1106,14 +1106,14 @@ static boolean_t std_out_req_rec_clbk(void)
 static void std_out_req_ack_clbk(void)
 {
 	switch (stp_pkt->b_request) {
-	case USB_SET_ADDRESS       :
+	case USB_SET_ADDRESS :
 		set_udp_addr(stp_pkt->w_value);
 		break;
         case USB_SET_CONFIGURATION :
 		/* FALLTHRU */
-	case USB_CLEAR_FEATURE     :
+	case USB_CLEAR_FEATURE :
                 /* FALLTHRU */
-	case USB_SET_FEATURE       :
+	case USB_SET_FEATURE :
 		break;
 	default :
 		return;
@@ -1318,7 +1318,7 @@ static void cls_in_req_ack_clbk(void)
 	switch (stp_pkt->b_request) {
 	case USB_HID_GET_REPORT :
 		/* FALLTHRU */
-	case USB_HID_GET_IDLE   :
+	case USB_HID_GET_IDLE :
 #if USB_LOG_CTL_REQ_CMD_EVENTS == 1
 		log_cls_cmd_event(req_done_str);
 #endif
@@ -1353,7 +1353,7 @@ static void cls_out_req_ack_clbk(void)
 #if USB_JIG_KEYB_IFACE == 1
 	case USB_HID_SET_REPORT :
 		/* FALLTHRU */
-	case USB_HID_SET_IDLE   :
+	case USB_HID_SET_IDLE :
 #if USB_LOG_CTL_REQ_CMD_EVENTS == 1
 		log_cls_cmd_event(req_done_str);
 #endif
