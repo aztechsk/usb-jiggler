@@ -1,8 +1,8 @@
 
 # usb-jiggler
 
-The **usb-jiggler** C library provides a USB HID profile with mouse and keyboard interfaces.
+The **usb-jiggler** C library provides a USB HID profile with both mouse and keyboard interfaces.
 
-### Library features
+### Library Features
 
 - Standardized API (for the AZTech framework).
